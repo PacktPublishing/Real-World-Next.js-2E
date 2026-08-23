@@ -1,0 +1,16 @@
+# The Content Signals alternative from the chapter.
+#
+# MetadataRoute.Robots has no typed field for Content-Signal, and app/robots.ts
+# and public/robots.txt both serve /robots.txt, so they cannot coexist.
+# Adopting this means deleting app/robots.ts and moving this file to
+# public/robots.txt — losing the typed benefits and the per-environment logic
+# in exchange for directives Next.js does not yet model.
+
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+Allow: /
+Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://acme.com/sitemap.xml

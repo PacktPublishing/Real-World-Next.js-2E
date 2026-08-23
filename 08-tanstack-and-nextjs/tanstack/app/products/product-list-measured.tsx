@@ -1,0 +1,56 @@
+'use client'
+
+import { useVirtualizer } from '@tanstack/react-virtual'
+import { useRef } from 'react'
+import { type Product } from '@/lib/products'
+
+// The variable-height variant from the chapter: the row carries
+// `ref={virtualizer.measureElement}` and `data-index`, and its `height` comes
+// off the style so each row renders at its natural height. `estimateSize`
+// then becomes what its name says — an estimate for rows not yet measured.
+export function ProductListMeasured({ products }: { products: Product[] }) {
+  const parentRef = useRef<HTMLDivElement>(null)
+
+  const virtualizer = useVirtualizer({
+    count: products.length,
+    getScrollElement: () => parentRef.current,
+    estimateSize: () => 100,
+    overscan: 5,
+  })
+
+  return (
+    <div ref={parentRef} style={{ height: '600px', overflow: 'auto' }}>
+      <div
+        style={{
+          height: `${virtualizer.getTotalSize()}px`,
+          width: '100%',
+          position: 'relative',
+        }}
+      >
+        {virtualizer.getVirtualItems().map((virtualRow) => {
+          const product = products[virtualRow.index]
+
+          return (
+            <div
+              key={virtualRow.key}
+              ref={virtualizer.measureElement}
+              data-index={virtualRow.index}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                transform: `translateY(${virtualRow.start}px)`,
+              }}
+            >
+              <div style={{ padding: '16px', borderBottom: '1px solid #eee' }}>
+                <h3>{product.name}</h3>
+                <p>${product.price}</p>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}

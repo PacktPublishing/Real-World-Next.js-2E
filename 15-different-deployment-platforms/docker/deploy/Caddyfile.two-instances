@@ -1,0 +1,10 @@
+# Zero-downtime deploys: two instances on different ports, restarted one at a
+# time. The proxy stops sending traffic to an instance that isn't answering
+# /api/health, so the site stays up throughout.
+acme.com {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:3000 127.0.0.1:3001 {
+        lb_policy round_robin
+        health_uri /api/health
+    }
+}

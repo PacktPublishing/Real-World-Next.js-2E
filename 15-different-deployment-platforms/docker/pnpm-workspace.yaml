@@ -1,0 +1,5 @@
+# pnpm blocks dependency build scripts by default, and sharp has one, so an
+# unattended install in a container skips it silently. This is the
+# non-interactive equivalent of `pnpm approve-builds`.
+onlyBuiltDependencies:
+  - sharp

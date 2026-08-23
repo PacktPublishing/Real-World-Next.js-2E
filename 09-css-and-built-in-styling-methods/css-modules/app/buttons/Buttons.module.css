@@ -1,0 +1,27 @@
+.button-default {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: grey;
+  color: black;
+}
+
+.button-success {
+  composes: button-default;
+  background-color: green;
+  color: white;
+}
+
+.button-danger {
+  composes: button-default;
+  background-color: red;
+  color: white;
+}
+
+/* Composition also works across files. Two constraints apply: the composed
+   value must be a single class selector, and under Turbopack the file we
+   compose from must itself be a .module.css file. */
+.button-shared {
+  composes: buttonDefault from '../styles/base.module.css';
+  background-color: green;
+}

@@ -1,0 +1,21 @@
+// The button composition expressed with SCSS's @extend keyword, which copies
+// another rule's declarations into the current one.
+.button-default {
+  padding: $radius;
+  border: none;
+  border-radius: $radius;
+  background-color: $color-neutral;
+  color: black;
+}
+
+.button-success {
+  @extend .button-default;
+  background-color: $color-success;
+  color: white;
+}
+
+.button-danger {
+  @extend .button-default;
+  background-color: $color-danger;
+  color: white;
+}

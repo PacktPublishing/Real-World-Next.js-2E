@@ -1,0 +1,24 @@
+.homepage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #2196f3;
+}
+
+.title {
+  color: #f5f5f5;
+}
+
+/* The class name inside :global() is emitted exactly as written, with no
+   hashing. Handy when a component needs to style markup it doesn't control;
+   every global selector is a small hole in the scoping guarantee, so use it
+   deliberately and sparingly. */
+:global(.button) {
+  padding: 5px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}

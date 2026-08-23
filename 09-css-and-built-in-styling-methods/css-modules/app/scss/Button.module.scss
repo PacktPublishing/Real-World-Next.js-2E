@@ -1,0 +1,18 @@
+// The same result with selector nesting, for a more compact syntax.
+.button {
+  padding: $radius;
+  border: none;
+  border-radius: $radius;
+  background-color: $color-neutral;
+  color: black;
+
+  &.success {
+    background-color: $color-success;
+    color: white;
+  }
+
+  &.danger {
+    background-color: $color-danger;
+    color: white;
+  }
+}

@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+/* Tailwind's dark: variant follows prefers-color-scheme by default. Redefining
+   it here keys it off a class instead, so ThemeToggle can drive it. In v3 this
+   was darkMode: 'class' in tailwind.config.js; v4 has no config file. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Configuration lives in CSS through @theme. Each namespace prefix
+   (--color-*, --font-*, --spacing-*) tells Tailwind which family of utilities
+   to generate; a variable outside a recognized namespace generates nothing. */
+@theme {
+  --color-brand: #6366f1;
+  --color-brand-light: #818cf8;
+  --color-brand-dark: #4f46e5;
+  --font-display: "Inter", sans-serif;
+}
+
+/* An escape hatch rather than a primary idiom. Its honest use case is styling
+   markup we don't control, such as a third-party widget expecting a class. */
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-brand text-white font-medium rounded-lg
+           hover:bg-brand-dark transition-colors;
+  }
+}

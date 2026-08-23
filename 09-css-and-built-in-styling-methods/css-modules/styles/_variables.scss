@@ -1,0 +1,6 @@
+// Prepended to every Sass file through sassOptions.additionalData in
+// next.config.ts, so these are available without an explicit @use rule.
+$radius: 5px;
+$color-neutral: grey;
+$color-success: green;
+$color-danger: red;

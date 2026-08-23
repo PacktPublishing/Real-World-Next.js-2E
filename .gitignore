@@ -171,3 +171,20 @@ Temporary Items
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,osx,vscode,node
+### Real-World Next.js 2E ###
+# Next.js build output
+/out/
+.turbo
+
+# Vercel
+.vercel
+
+# TypeScript incremental build info emitted by create-next-app
+next-env.d.ts
+
+# Test artifacts
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+storybook-static

@@ -1,0 +1,4 @@
+# Every chapter example is a standalone package.
+# Folders follow the NN-chapter-slug/example-slug convention.
+packages:
+  - '[0-9][0-9]-*/*'
